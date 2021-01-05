@@ -1,0 +1,63 @@
+#port to run apache on
+server:
+  port: 8083
+
+#Healthchecks
+management:
+  server:
+    port: 8183
+    security:
+      enabled: false
+  endpoints.web:
+    base-path: /
+    exposure.include: '*'
+  endpoint.health.show-details: always
+
+# Database settings
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl.auto: none
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  h2:
+    console:
+      enabled: true
+
+
+# Log configuration
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%level] [%thread] %logger{36} - %msg%n'
+    #file: '%d{yyyy-MM-dd HH:mm:ss} [%level] [%thread] %logger{36} - %msg%n'
+  #file: api.log
+  level:
+    root: DEBUG
+    org.apache: ERROR
+    org.springframework: INFO
+    org.springframework.web: ERROR
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    sun.rmi: ERROR
+    com.zaxxer: ERROR
+    com.zaxxer.hikari.HikariConfig: INFO
+    com.experta: TRACE
+    org.hibernate: ERROR
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+api:
+  wenance:
+    url: https://cex.io/api
+    endpoint: /last_price/BTC/USD
