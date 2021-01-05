@@ -71,7 +71,7 @@ public class BitcoinService {
 			ResponseEntity<BitcoinRequestDto> response = restTemplate.exchange(url,
 					HttpMethod.GET,
 					null,
-					new ParameterizedTypeReference<>() {
+					new ParameterizedTypeReference<BitcoinRequestDto>() {
 					});
 			if (response.getStatusCode().equals(HttpStatus.NO_CONTENT)) {
 				LOGGER.debug("getBitcoinPrice - without results");
