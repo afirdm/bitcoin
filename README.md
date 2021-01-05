@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/afirdm/bitcoin.svg?branch=master)](https://travis-ci.org/github/afirdm/bitcoin)
+[![Build Status](https://travis-ci.com/afirdm/bitcoin.svg?branch=main)](https://travis-ci.com/github/afirdm/bitcoin)
 
 # Bitcoin - Code Challenge Wenance
 
