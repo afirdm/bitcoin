@@ -3,6 +3,7 @@
 # Bitcoin - Code Challenge Wenance
 
 ![N|Solid](https://images.idgesg.net/images/article/2018/02/bitcoin_increase_growth_on_fire_thinkstock_886921368-100749770-large.jpg)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fafirdm%2Fbitcoin.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fafirdm%2Fbitcoin?ref=badge_shield)
 
 - ### Enunciado:
 A) Construir un microservicio que haciendo uso del siguiente servicio REST (https://cex.io/api/last_price/BTC/USD)
@@ -75,3 +76,7 @@ Response:
     }
 
 Cualquier duda o consulta por favor enviar mail a alejandro.firdman@hotmail.com muchas gracias!
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fafirdm%2Fbitcoin.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fafirdm%2Fbitcoin?ref=badge_large)
