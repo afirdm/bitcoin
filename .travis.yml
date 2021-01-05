@@ -1,5 +1,6 @@
 language: java
+sudo: true
+jdk: oraclejdk11
 
-rvm:
- - 2.2
- - java
+before_install:
+ - chmod +x mvnw
