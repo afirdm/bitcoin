@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.com/afirdm/bitcoin.svg?branch=main)](https://travis-ci.com/github/afirdm/bitcoin)
+[![codecov](https://codecov.io/gh/afirdm/bitcoin/branch/main/graph/badge.svg)](https://codecov.io/gh/afirdm/bitcoin)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fafirdm%2Fbitcoin.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fafirdm%2Fbitcoin?ref=badge_shield)
 
 # Bitcoin - Code Challenge Wenance
 

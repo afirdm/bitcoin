@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -42,6 +43,7 @@ public class Bitcoin implements Serializable {
 	private String currency2;
 
 	@Column(name = "create_date", nullable = false)
-	private Date createDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+	private Timestamp createDate;
 
 }
