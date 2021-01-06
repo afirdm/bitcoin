@@ -14,9 +14,6 @@ spring:
       hibernate:
         hbm2ddl.auto: none
 
-  jackson:
-    serialization:
-      write-dates-as-timestamps: true
   h2:
     console:
       enabled: true
