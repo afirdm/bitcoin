@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URI;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -99,10 +100,14 @@ public class BitcoinService {
 	}
 
 	public MetricsDto getMetrics(Timestamp fechaDesde, Timestamp fechaHasta) {
-		return MetricsDto.builder()
-				.average(dao.findByCreateDateBetween(fechaDesde,fechaHasta).stream()
-						.mapToDouble(Bitcoin::getPrice).average().getAsDouble())
+		MetricsDto dto = MetricsDto.builder()
+				.average(BigDecimal.valueOf(dao.findByCreateDateBetween(fechaDesde,fechaHasta).stream()
+						.mapToDouble(Bitcoin::getPrice).average().getAsDouble()))
 				.maxPrice(new BigDecimal(dao.getMaxPrice()))
 				.build();
+		dto.setPercentage(dto.getMaxPrice().subtract(dto.getAverage())
+				.divide(dto.getMaxPrice(), 2, RoundingMode.HALF_UP)
+				.multiply(new BigDecimal(100)));
+		return dto;
 	}
 }

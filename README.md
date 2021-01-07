@@ -92,7 +92,7 @@ Response:
         "createDate":"2021-01-06 14:25:15.334"
     }
     
-###### 2) Ejemplo (Conocer el promedio de valor entre dos timestamps y el valor máximo almacenado para toda la serie temporal disponible)
+###### 2) Ejemplo (Conocer el promedio de valor entre dos timestamps así como la diferencia porcentual entre ese valor promedio y el valor máximo almacenado para toda la serie temporal disponible)
 
 Request:
 
@@ -103,8 +103,9 @@ Request:
 Response: 
 
 	{
-        "average": 36843.58666666667,
-        "maxPrice": 36847.4
+        "average": 32092.1,
+        "maxPrice": 36847.4,
+        "percentage":33.00
     }
     
 

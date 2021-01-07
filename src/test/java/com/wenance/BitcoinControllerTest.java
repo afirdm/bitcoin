@@ -59,7 +59,8 @@ public class BitcoinControllerTest {
 				.andDo(print())
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(jsonPath("$.average", is(32092.1)))
-				.andExpect(jsonPath("$.maxPrice", is(34092.1)));
+				.andExpect(jsonPath("$.maxPrice", is(48138.1)))
+				.andExpect(jsonPath("$.percentage", is(33.0)));
 	}
 
 	@Test
