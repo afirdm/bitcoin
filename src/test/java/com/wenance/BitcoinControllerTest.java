@@ -44,6 +44,20 @@ public class BitcoinControllerTest {
 	}
 
 	@Test
+	public void getBitcoinMaxPrice() throws Exception {
+
+		RequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/wenance/bitcoin/max_price")
+				.accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		this.mockMvc.perform(requestBuilder)
+				.andDo(print())
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(jsonPath("$", is(34800)));
+	}
+
+	@Test
 	public void getBitcoinPriceByDate() throws Exception {
 		String fecha = "2021-01-06 02:00:20.943";
 
