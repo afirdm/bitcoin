@@ -4,8 +4,8 @@ CREATE SEQUENCE SEQ_BITCOIN MINVALUE 1 MAXVALUE 9999999999 INCREMENT BY 1 NOCACH
 
 create table BITCOIN
 (
-    id          long        not null,
-    lprice      varchar(50) not null,
+    id          long        not null primary key,
+    lprice      double      not null,
     curr1       varchar(50) not null,
     curr2       varchar(50) not null,
     create_date TIMESTAMP not null

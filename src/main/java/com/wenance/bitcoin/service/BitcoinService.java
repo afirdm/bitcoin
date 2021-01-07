@@ -2,6 +2,7 @@ package com.wenance.bitcoin.service;
 
 import com.wenance.bitcoin.dao.BitcoinDao;
 import com.wenance.bitcoin.dto.BitcoinDto;
+import com.wenance.bitcoin.dto.MetricsDto;
 import com.wenance.bitcoin.model.Bitcoin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -96,7 +98,11 @@ public class BitcoinService {
 		}).findFirst().orElse(null);
 	}
 
-	public String getBitcoinMaxPrice() {
-		return dao.getMaxPrice();
+	public MetricsDto getMetrics(Timestamp fechaDesde, Timestamp fechaHasta) {
+		return MetricsDto.builder()
+				.average(dao.findByCreateDateBetween(fechaDesde,fechaHasta).stream()
+						.mapToDouble(Bitcoin::getPrice).average().getAsDouble())
+				.maxPrice(new BigDecimal(dao.getMaxPrice()))
+				.build();
 	}
 }
