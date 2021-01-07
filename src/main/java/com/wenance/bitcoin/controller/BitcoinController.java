@@ -30,7 +30,7 @@ public class BitcoinController {
 	@Autowired
 	private BitcoinService bitcoinService;
 
-	@Scheduled(fixedDelay=5000)
+	@Scheduled(fixedDelay=10000)
 	public void saveBitcoinPrice() {
 		LOGGER.info("INICIO BitcoinController - saveBitcoinPrice");
 		bitcoinService.saveBitcoinPrice();
