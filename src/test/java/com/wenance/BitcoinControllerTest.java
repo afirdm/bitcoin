@@ -44,17 +44,39 @@ public class BitcoinControllerTest {
 	}
 
 	@Test
-	public void getBitcoinMaxPrice() throws Exception {
+	public void getMetrics() throws Exception {
+		String fechaDesde = "2021-01-06 02:00:20.943";
+		String fechaHasta = "2021-01-06 02:00:20.943";
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.get("/wenance/bitcoin/max_price")
+				.get("/wenance/bitcoin/metrics")
+				.queryParam("fechaDesde", fechaDesde)
+				.queryParam("fechaHasta", fechaHasta)
 				.accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON);
 
 		this.mockMvc.perform(requestBuilder)
 				.andDo(print())
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(jsonPath("$", is(34800)));
+				.andExpect(jsonPath("$.average", is(32092.1)))
+				.andExpect(jsonPath("$.maxPrice", is(34092.1)));
+	}
+
+	@Test
+	public void getMetricsBadRequest() throws Exception {
+		String fechaDesde = "2021-01-06";
+		String fechaHasta = "2021-01-06";
+
+		RequestBuilder requestBuilder = MockMvcRequestBuilders
+				.get("/wenance/bitcoin/metrics")
+				.queryParam("fechaDesde", fechaDesde)
+				.queryParam("fechaHasta", fechaHasta)
+				.accept(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_JSON);
+
+		this.mockMvc.perform(requestBuilder)
+				.andDo(print())
+				.andExpect(MockMvcResultMatchers.status().isBadRequest());
 	}
 
 	@Test
@@ -70,8 +92,8 @@ public class BitcoinControllerTest {
 		this.mockMvc.perform(requestBuilder)
 				.andDo(print())
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(jsonPath("$.id", is(2)))
-				.andExpect(jsonPath("$.lprice", is("32800")))
+				.andExpect(jsonPath("$.id", is(200)))
+				.andExpect(jsonPath("$.lprice", is(32092.1)))
 				.andExpect(jsonPath("$.curr1", is("BTC")))
 				.andExpect(jsonPath("$.curr2", is("USD")))
 				.andExpect(jsonPath("$.createDate", is(fecha)));

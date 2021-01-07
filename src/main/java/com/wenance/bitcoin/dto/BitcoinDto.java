@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 @Getter
 public class BitcoinDto {
 	private Long id;
-	private String lprice;
+	private Double lprice;
 	private String curr1;
 	private String curr2;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss.SSS")

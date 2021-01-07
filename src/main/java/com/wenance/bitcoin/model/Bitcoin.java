@@ -34,7 +34,7 @@ public class Bitcoin implements Serializable {
 	private Long id;
 
 	@Column(name = "lprice", nullable = false)
-	private String price;
+	private Double price;
 
 	@Column(name = "curr1", nullable = false)
 	private String currency1;

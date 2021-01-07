@@ -33,8 +33,6 @@ Anexo documentación de la API con Swagger http://localhost:8082/swagger-ui.html
 
 Pre requisito: utilizar un cliente ej Postman o [apitester](https://apitester.com "cliente para probar la api")
 
-##### Nivel 1:
-
 ##### Build
 
 Run `mvn clean package` to build the project. The build artifacts will be stored in the `target/` directory
@@ -60,9 +58,10 @@ Run `mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:trans
 	CONSOLE: http://localhost:8082/h2-console
 	USER: SA
 	PASSWORD: 
+	
+	TABLE: BITCOIN
 
-
-###### 1) Ejemplo (Obtener el precio del bitcoin en cierto timestamp)
+###### A) Ejemplo (Consultar microservicio REST y almacenar los datos)
 
 Request:
 
@@ -75,5 +74,38 @@ Response:
         "curr1": "BTC",
         "curr2": "USD"
     }
+
+###### 1) Ejemplo (Obtener el precio del bitcoin en cierto timestamp)
+
+Request:
+
+	GET → http://localhost:8082/wenance/bitcoin
+	RequestParam fecha → 2021-01-06 14:25:15.334
+
+Response: 
+
+	{
+        "id": "200",
+        "lprice": "31566.1",
+        "curr1": "BTC",
+        "curr2": "USD",
+        "createDate":"2021-01-06 14:25:15.334"
+    }
+    
+###### 2) Ejemplo (Conocer el promedio de valor entre dos timestamps y el valor máximo almacenado para toda la serie temporal disponible)
+
+Request:
+
+	GET → http://localhost:8082/wenance/bitcoin/metrics
+    RequestParam fechaDesde → 2021-01-06 23:51:41.449
+    RequestParam fechaHasta → 2021-01-06 23:52:56.244
+
+Response: 
+
+	{
+        "average": 36843.58666666667,
+        "maxPrice": 36847.4
+    }
+    
 
 Cualquier duda o consulta por favor enviar mail a alejandro.firdman@hotmail.com muchas gracias!
