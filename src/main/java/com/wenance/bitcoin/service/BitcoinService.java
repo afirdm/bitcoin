@@ -41,7 +41,6 @@ public class BitcoinService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(BitcoinService.class);
 
-
 	public void saveBitcoinPrice() {
 		BitcoinDto dto = getBitcoinPrice();
 		Bitcoin bitcoin = Bitcoin.builder()
@@ -95,5 +94,9 @@ public class BitcoinService {
 					.createDate(bitcoin.getCreateDate())
 					.build();
 		}).findFirst().orElse(null);
+	}
+
+	public String getBitcoinMaxPrice() {
+		return dao.getMaxPrice();
 	}
 }

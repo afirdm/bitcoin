@@ -53,4 +53,16 @@ public class BitcoinController {
 		LOGGER.trace("BitcoinController - getBitcoinPriceByDate response [{}]", dto);
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
+
+	@GetMapping("/bitcoin/max_price")
+	@ApiOperation(value = "Obtener el valor máximo almacenado para toda la serie temporal disponible")
+	@ApiResponses(value={
+			@ApiResponse(message = "En caso de obtener el valor máximo del bitcoin se retorna HttpStatus.OK", code = 200),
+			@ApiResponse(message = "En caso de un error no definido se retorna HttpStatus.BAD_REQUEST", code = 400)
+	})
+	public ResponseEntity<?> getBitcoinMaxPrice() {
+		String maxPrice = bitcoinService.getBitcoinMaxPrice();
+		LOGGER.trace("BitcoinController - getBitcoinMaxPrice response [{}]", maxPrice);
+		return new ResponseEntity<>(maxPrice, HttpStatus.OK);
+	}
 }
