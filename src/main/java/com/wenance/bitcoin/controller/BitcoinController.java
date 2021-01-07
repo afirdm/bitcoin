@@ -56,9 +56,9 @@ public class BitcoinController {
 	}
 
 	@GetMapping("/bitcoin/metrics")
-	@ApiOperation(value = "Obtener obtener el promedio entre dos Timestamps y el valor máximo almacenado para toda la serie temporal disponible")
+	@ApiOperation(value = "Obtener obtener el promedio entre dos Timestamps, la diferencia porcentual entre ese valor promedio y el valor máximo y el valor máximo almacenado para toda la serie temporal disponible")
 	@ApiResponses(value={
-			@ApiResponse(message = "En caso de obtener el promedio entre dos Timestamps y el valor máximo del bitcoin se retorna HttpStatus.OK", code = 200),
+			@ApiResponse(message = "En caso de obtener el promedio entre dos Timestamps, la diferencia porcentual y el valor máximo del bitcoin se retorna HttpStatus.OK", code = 200),
 			@ApiResponse(message = "En caso de un error no definido se retorna HttpStatus.BAD_REQUEST", code = 400)
 	})
 	public ResponseEntity<?> getMetrics(@RequestParam(name="fechaDesde") Timestamp fechaDesde,
